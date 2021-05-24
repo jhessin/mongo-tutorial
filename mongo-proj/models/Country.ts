@@ -1,8 +1,8 @@
 /** @format */
 
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const schema = new mongoose.Schema({
+const schema = new Schema({
   name: {
     type: String,
     default: '',
@@ -17,4 +17,4 @@ const schema = new mongoose.Schema({
   },
 });
 
-export const Country = mongoose.model('Country', schema);
+export const Country = model('Country', schema);

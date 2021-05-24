@@ -5,8 +5,10 @@ import { City } from '../models';
 
 const router = Router();
 
-router.get('/', (_req, res) => {
-  City.find(null)
+router.get('/', (req, res) => {
+  const { query } = req;
+
+  City.find(query)
     .then(cities => {
       res.json({
         confirmation: 'success',
@@ -16,7 +18,7 @@ router.get('/', (_req, res) => {
     .catch(err => {
       res.json({
         confirmation: 'failure',
-        data: err.message,
+        message: err.message,
       });
     });
 });

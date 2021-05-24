@@ -11,7 +11,7 @@ import { cities, countries } from './routes';
 const app = express();
 
 // add default home route
-app.get('/', (req, res, next) => {
+app.get('/', (_req, res) => {
   res.json({
     confirmation: 'success',
     data: 'This is the Mongo project!',
@@ -28,7 +28,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(data => {
+  .then(() => {
     console.log('Mongo DB connection success!');
     // start server
     app.listen(8080, '0.0.0.0', () => {

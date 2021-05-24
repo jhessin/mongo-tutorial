@@ -1,13 +1,13 @@
 /** @format */
 
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const scheme = new mongoose.Schema({
+const scheme = new Schema({
   name: {
     type: String,
     default: '',
   },
-  continent: {
+  country: {
     type: String,
     default: '',
   },
@@ -17,4 +17,4 @@ const scheme = new mongoose.Schema({
   },
 });
 
-export const City = mongoose.model('City', scheme);
+export const City = model('City', scheme);
