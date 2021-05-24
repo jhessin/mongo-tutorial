@@ -23,4 +23,20 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res, next) => {
+  City.findById(req.params.id)
+    .then(city => {
+      res.json({
+        confirmation: 'success',
+        data: city,
+      });
+    })
+    .catch(() => {
+      res.json({
+        confirmation: 'fail',
+        message: `City id:${req.params.id} not found`,
+      });
+    });
+});
+
 export { router as cities };

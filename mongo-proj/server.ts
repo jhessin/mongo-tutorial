@@ -27,6 +27,7 @@ mongoose
   .connect('mongodb://localhost/world', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log('Mongo DB connection success!');
