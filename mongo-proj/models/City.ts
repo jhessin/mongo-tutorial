@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-const City = new mongoose.Schema({
+const scheme = new mongoose.Schema({
   name: {
     type: String,
     default: '',
@@ -17,4 +17,4 @@ const City = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('City', City);
+export const City = mongoose.model('City', scheme);

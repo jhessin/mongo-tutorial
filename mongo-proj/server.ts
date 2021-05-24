@@ -1,13 +1,16 @@
 /** @format */
 
+// Module imports
 import express from 'express';
 import mongoose from 'mongoose';
 
-import City from './models/City';
-import Country from './models/Country';
+// Route imports
+import { cities, countries } from './routes';
 
+// create app
 const app = express();
 
+// add default home route
 app.get('/', (req, res, next) => {
   res.json({
     confirmation: 'success',
@@ -15,37 +18,9 @@ app.get('/', (req, res, next) => {
   });
 });
 
-app.get('/cities', (req, res, next) => {
-  City.find(null)
-    .then(cities => {
-      res.json({
-        confirmation: 'success',
-        data: cities,
-      });
-    })
-    .catch(err => {
-      res.json({
-        confirmation: 'failure',
-        data: err.message,
-      });
-    });
-});
-
-app.get('/countries', (req, res, next) => {
-  Country.find(null)
-    .then(countries => {
-      res.json({
-        confirmation: 'success',
-        data: countries,
-      });
-    })
-    .catch(err => {
-      res.json({
-        confirmation: 'failure',
-        data: err.message,
-      });
-    });
-});
+// add routes
+app.use('/cities', cities);
+app.use('/countries', countries);
 
 // connect to our Mongo DB:
 mongoose
@@ -55,6 +30,7 @@ mongoose
   })
   .then(data => {
     console.log('Mongo DB connection success!');
+    // start server
     app.listen(8080, '0.0.0.0', () => {
       console.log('Server listening on port 8080');
     });

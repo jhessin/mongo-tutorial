@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose';
 
-const Country = new mongoose.Schema({
+const schema = new mongoose.Schema({
   name: {
     type: String,
     default: '',
@@ -17,4 +17,4 @@ const Country = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Country', Country);
+export const Country = mongoose.model('Country', schema);
